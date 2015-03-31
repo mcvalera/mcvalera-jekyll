@@ -8,7 +8,6 @@ $(document).ready(function() {
 });
 
 function clickEventListeners() {
-  console.log('define Location');
   // on click for any nav item whose id begins with 'nav'
   $('[id^=nav]').click(function(event) {
 
