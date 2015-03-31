@@ -55,8 +55,11 @@ nav {
 
 footer {
   text-align: center;
+  height: 50px;
   p {
-    margin-top: 10px;
+    margin: 0px;
+    position: relative;
+    top: 10px;
   }
 }
 
@@ -95,3 +98,7 @@ section .container {
         'skills',
         'work'
 ;
+
+// IMPORTING PARTIAL FOR POST STYLING
+
+@import 'post';

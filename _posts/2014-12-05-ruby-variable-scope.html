@@ -1,0 +1,138 @@
+---
+layout: post
+title: 'Ruby: Variable Scope'
+date: 2014-12-05
+tags: [DBC, technical blog, ruby]
+---
+
+          <p>One of the primary things that I have learned to contend with over the previous couple weeks has been the importance of variable scope. <strong>Scope</strong> just refers to how visible identifiers such as variables are, and which methods or classes can access them.</p>
+            <!-- If you want to add an image include link below -->
+            <!-- <img src="#" /> -->
+          <!-- Resume typing post below if desired -->
+          <p>This week at DBC, we were briefly exposed to five types of variables: Global, Constant, Class, Instance, and Local.</p>
+
+          <p>A global scope is a scope that covers the entire program. Global variables have global scope, and are identified with a $ character. Global variables are accessible in any class or method within the program and thus are simply never out of scope.</p>
+
+          <pre><code>
+$global_var = "I am a global variable!"
+
+class ClassName
+  def access_global
+    puts $global_var
+  end
+end
+
+test = ClassName.new
+test.access_global
+
+=> "I am a global variable!"
+          </code></pre>
+
+          <p>Constants are identified by being UPCASE. They can be defined within class and method definitions, and can be accessed from anywhere provided that the user is familiar with the order of nested definitions. In that sense, constants seem to have a scope that is similar to global--as long as you know the path. Note, however, that in the constants X below, the constant in one scope is not the same as the constant X in the other.</p>
+
+          <pre><code>
+class A
+  class B
+    X = 1
+    class C
+      X = 5
+    end
+  end
+end
+
+puts A::B::X => 1
+puts A::B::C::X => 2
+          </code></pre>
+
+          <p>Class variables are easily identifiable in that they are always preceded by two @@ symbols. They are not class scoped as the name would suggest, but are instead class-hierarchy scoped. What this means is that they are shared across <i>all instances</i> of a class, as well as outside of a class.</p>
+
+          <pre><code>
+class NameLength
+  @@length = 0
+
+  def initialize(name)
+    @@length = name.length
+    puts "Your name is #{@@length} characters long!"
+  end
+end
+
+first_name = NameLength.new("Clarisse")
+=> "Your name is 8 characters long!"
+          </code></pre>
+
+          <p>Instance variables, on the other hand, can only be accessed within any instance of a class but not outside of the class. The scope of an instance variable is such that they are only accessible to methods within the same class. Instance variables are always preceded by a single @ symbol.</p>
+
+          <pre><code>
+class Yearbook
+
+  def initialize(name, birthday, fave_quote)
+    @name = name
+    @birthday = birthday
+    @fave_quote = fave_quote
+  end
+
+  def name
+    @name
+  end
+
+  def birthday
+    @birthday
+  end
+
+  def fave_quote
+    @fave_quote
+  end
+
+end
+
+cvalera = Yearbook.new("Clarisse Valera", "09/08/1988", "Do I dare / Disturb
+the universe? / In a minute there is time / For decisions and revisions which
+a minute will reverse.")
+puts "Name: #{cvalera.name}"
+puts "Birthday: #{cvalera.birthday}"
+puts "Favorite Quote: #{cvalera.fave_quote}"
+
+# The outcome of the code above is as follows:
+=> Name: Clarisse Valera
+=> Birthday: 09/08/1988
+=> Favorite Quote: Do I dare / Disturb the universe? / In a minute there is
+time / For decisions and revisions which a minute will reverse.
+          </code></pre>
+
+          <p>Local variables have the most limited scope and are only accessible within a method. Because of this, local variables of the same name within different methods in a class can have different values.</p>
+
+          <pre><code>
+class SiblingBirthdays
+
+  def personal_info
+    name = "Clarisse"
+    birthday = "09/08/1988"
+    puts "Name: #{name}, Birthday: #{birthday}"
+  end
+
+  def brothers_info
+    name = "John"
+    birthday = "06/24/85"
+    puts "Name: #{name}, Birthday: #{birthday}"
+
+  end
+
+  def sisters_info
+    name = "Trina"
+    birthday = "10/31/86"
+    puts "Name: #{name}, Birthday: #{birthday}"
+  end
+
+end
+
+test = SiblingBirthdays.new
+test.personal_info
+
+=> Name: Clarisse, Birthday: 09/08/88
+test.brothers_info
+=> Name: John, Birthday: 06/24/85
+test.sisters_info
+=> Name: Trina, Birthday: 10/31/86
+          </code></pre>
+
+          <p>There's more to variable scope and the above mentioned variables that even I don't know yet, but it seems to me so far that this is a good place to start! As always, try it out for yourself, and I hope this post was illuminating!</p>

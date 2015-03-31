@@ -1,0 +1,60 @@
+---
+layout: post
+title: 'An Introduction to Regular Expressions'
+date: 2014-12-30
+tags: [DBC, technical blog, regex]
+---
+
+          <p>Every now and again in my adventures in coding thus far, I encounter a couple of lines of code that look like gibberish. What could the lines upon lines of random characters with slashes everywhere be? And what do these strange combinations of characters do? Ladies and gentlemen, today is the day that I've figured out that mystery. It turns out the weird combinations of numbers and letters and symbols are simply regular expressions! What's more is that they actually mean something!</p>
+
+            <img class='post-img' src='{{ '/assets/imgs/blog-imgs/regex.jpg' | prepend: site.baseurl }}' />
+
+
+          <p><strong>Regular expressions</strong> simply provide a flexible means by which one can search for strings of text that one is interested in. Think of it as the find and replace function on Microsoft Word, except instead of having to type in the exact letters/characters/symbols that you're looking for, you can instead put in a pattern and get all the results that fit that pattern. Following this comparison with Word, one can say that the simplest function of a regular expression is to match a sting of symbols exactly as it is (precisely as Word does.) like so:</p>
+
+          <table>
+            <th>Regex</th>
+            <th>Matches</th>
+            <tr>
+              <td>cat</td>
+              <td>dog<strong>cat</strong>dog</td>
+            </tr>
+          </table>
+
+          <p>Yeah, that's pretty useful. But eh, not very exciting. It's essentially like doing a Ctrl+F and we've all definitely seen that before. But what if you need to find a pattern as opposed to an exact text?</p>
+
+          <table>
+            <th>Regex</th>
+            <th>Matches</th>
+            <tr>
+              <td>\w\w\w\w_\d\d\d</td>
+              <td>duck_021, _cat_001, dogs_857, bear_253</td>
+            </tr>
+          </table>
+
+          <p>WOAAAAAAH. That's pretty cool! And yes, there are very many uses for being able to find patterns and not just predefined text. In this previous case, the RegEx I used are for characters, where "\w" searches for a word character such as ASCII letters, digits or underscores and "\d" looks for digits from 0-9. Note that there are certain different things that regex does depending on what language you are coding in. For example, in .NET and Python 3, "\d" looks for a Unicode digit as opposed to just digits from 0-9 (although that is what most engines will do). </p>
+
+          <p>In addition to the cool things above that you can do with RegEx, it also provides you with modifiers so that you can perform case-insensitive and global searches. You can see the <i>i</i> modifier in action in the JavaScript code below:</p>
+
+          <pre><code>
+var str = "I want a Golden Retriever!";
+var find = str.search(/golden\sretriever/i);
+var change = str.replace(/golden\sretriever/i, "puppy");
+
+console.log(find);      // 9
+console.log(change);    // "I want a puppy!""
+console.log(str);       // still "I want a Golden Retriever!"
+
+/*
+search() examines a string to see if there are any matches for an expression. If there are any matches, it will return the position of the string where the match is found. If not, it will return -1.
+
+replace() simply replaces the match with a different text.
+
+"\s" matches any white space character
+The "i" at the end is a modifier that allows you to perform case-insensitive matching
+*/
+          </code></pre>
+
+          <p>There are, of course, other modifiers. Using <i>g</i> allows you to perform a global match, while <i>m</i> allows you to do multiline matching.</p>
+
+          <p>To be quite honest, there are just so many regular expressions that you can use, and one post will certainly not cover them. There's a RegEx for characters, quantifiers, logic, different kinds of white-space, and various character classes, and that's not even all of them. This is where the internet becomes your best friend. I suggest looking into websites that have tables upon tables of regular expressions. I personally found <a href="http://www.rexegg.com/regex-quickstart.html">RexEgg.com</a> very useful, but there are other websites out there with cheat sheets on RegEx as well. Go explore, find a site that lists them out in a way that is most palatable to you, and then try them out for yourself!</p>

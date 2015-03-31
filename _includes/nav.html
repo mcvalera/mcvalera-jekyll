@@ -1,8 +1,10 @@
     <nav>
       <ul>
-        <li><a id='nav-home' href='#'>Home</a></li>
-        <li><a id='nav-skills' href='#'>Skills</a></li>
-        <li><a id='nav-work' href='#'>Work</a></li>
-        <li><a id='blog' href='blog/index.html'>Blog</a></li>
+        <li><a id='nav-home' href='{{ '/index.html' | prepend: site.baseurl }}'>Home</a></li>
+        <li><a id='nav-skills' href='{{ '/index.html' | prepend: site.baseurl }}'>Skills</a></li>
+        <li><a id='nav-work' href='{{ '/index.html' | prepend: site.baseurl }}'>Work</a></li>
+        <li><a id='blog' href='{{ '/blog/index.html' | prepend: site.baseurl }}'>Blog</a></li>
       </ul>
     </nav>
+
+    <link rel='stylesheet' href='{{ '/assets/css/normalize.css' | prepend: site.baseurl }}'>

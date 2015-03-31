@@ -1,0 +1,83 @@
+.each-post {
+  border-bottom: 1px solid lightgray;
+}
+
+.post-header {
+  text-align: center;
+}
+
+.post-title {
+  font-size: 1.8em;
+  a {
+    font-weight: 300;
+  }
+}
+
+.post-meta {
+  color: $secondary-text-color
+}
+
+.post-content {
+  text-align: center;
+  p {
+    text-indent: 50px;
+    text-align: justify;
+  }
+}
+
+// for all single photos to be centered
+.post-img {
+    display: block;
+    margin: 0 auto;
+    max-width: 650px;
+  }
+
+.post-footer {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.pagination {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+// STYLING FOR CODE BLOCKS
+pre {
+  width: auto;
+  text-align: justify;
+  //background-color: #f5f5f5;
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  word-wrap: break-word;
+  padding: 0px 40px 20px 40px;
+  margin: 0;
+  display: block;
+}
+
+// STYLING FOR TABLES WITHIN BLOG POSTS
+.post-content table {
+  border-collapse: collapse;
+  margin: 0 auto;
+  table, th, td {
+    border: 1px solid gray;
+    text-align: center;
+    tr {
+    }
+    th {
+      font-weight: bold;
+    }
+    td {
+    }
+  }
+}
+
+// STYLING ONLY W REGARD TO CSS POSITIONING POST 2014-11-06
+// two images side by side and centered
+.t2img {
+  border: 1px solid black;
+  max-height: 350px;
+  display: inline-block;
+  margin: 0 auto;
+}

@@ -1,0 +1,30 @@
+---
+layout: post
+title: 'Positioning in CSS'
+date: 2014-11-06
+tags: [DBC, technical blog, CSS]
+---
+
+<p>As I tinkered around with CSS a few days ago, I found myself stumped; I was playing with relative and absolute positioning and couldn't figure out how they were different! It was a rather frustrating experience, but now I'm just excited to use my newfound knowledge to make cleaner, more streamlined sites...beginning with this one!</p>
+
+<!-- p on static position -->
+<p>The <strong>static </strong>position is the default position value. This means that it is <i>not </i>positioned in any special way, and thus appears in order of the document flow.</p>
+
+<!-- p on fixed position -->
+<p>When an object is given the <strong>fixed</strong> position value, this just means that it stays on the exact same area of the page, relative to the <i>browser window</i> no matter how far you scroll down.</p>
+  <img class='t2img' src='{{ '/assets/imgs/blog-imgs/t2-fixed-1.png' | prepend: site.baseurl }}' />
+  <img class='t2img' src='{{ '/assets/imgs/blog-imgs/t2-fixed-2.png' | prepend: site.baseurl }}' />
+
+<!-- p on relative position -->
+<p>When you give an object the <strong>relative</strong> position value, this basically allows you to move that object <i>relative</i> to it's default or <i>static</i> place on the page. In the images below for instance, the image on the left was given the relative position value, and no other parameters. However, the image on the right was given the relative position value as well as moved 200px to the right <i>of its default location.</i></p>
+<img class='t2img' src='{{ '/assets/imgs/blog-imgs/t2-rel-1.png' | prepend: site.baseurl }}' />
+<img class='t2img' src='{{ '/assets/imgs/blog-imgs/t2-rel-2.png' | prepend: site.baseurl }}' />
+
+<!-- p on absolute position -->
+<p>Giving an object an <strong>absolute</strong> position value gives you the ability to move that object anywhere on the page. Just as with the relative element, you can use the attributes top, bottom, left and right to put the object exactly where you want it. The first image below has the values position: absolute, top: 0px, and left: 0px. The second image was given the values position: absolute, top: 250px, left: 300px. Because I did not give my absolute div a parent element with either an absolute or a relative position value, my absolute div defaulted to the html element--that is to say, it is placed relative to the page. As you can see, my absolute div overlapped with some text in the page. This is because this positioning is not affected by any other elements, and does not affect any elements itself.</p>
+<img class='t2img' src='{{ '/assets/imgs/blog-imgs/t2-absolute-1.png' | prepend: site.baseurl }}' />
+<img class='t2img' src='{{ '/assets/imgs/blog-imgs/t2-absolute-2.png' | prepend: site.baseurl }}' />
+
+<p>Just in case that didn't help (or even if it did), I suggest watching <a href='https://www.youtube.com/embed/aFtByxWjfLY'>this video</a>. It's the single most helpful resource that I have found for differentiating relative and absolute positioning, and I think it would be helpful for you as well!</p>
+
+<p>Happy positioning! :)</p>
