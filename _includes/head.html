@@ -1,12 +1,37 @@
+  <head>
+    <!-- <title>M Clarisse Valera</title> -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
+    <meta name="description" content="{% if page.description %}{{ page.description | strip_html | strip_newlines | truncate: 160}}{% else %}{{ site.description }}{% endif %}"
+
+    <!-- STYLESHEETS -->
+    <!-- normalize has to be first stylesheet -->
+    <!-- for cross-browser differences -->
+    <link rel='stylesheet' href='{{ '/assets/css/normalize.css' | prepend: site.baseurl }}'>
+    <link rel='stylesheet' href='{{ '/assets/css/skeleton.css' | prepend: site.baseurl }}'>
+    <!-- for navbar, footer and general elements styling -->
+    <link rel='stylesheet' href='{{ '/assets/css/stylesheet.css' | prepend: site.baseurl }}'>
+
+    <!-- FONTS -->
+    <!-- font for header -->
+    <link href='//fonts.googleapis.com/css?family=Sacramento' rel='stylesheet' type='text/css'>
+    <!-- general font -->
+    <!-- font-weight: 300 or 400; -->
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'>
+  </head>
+
+
 <head>
-  <title>M Clarisse Valera</title>
-  <!-- normalize has to be first stylesheet -->
-  <link rel='stylesheet' href='{{ '/assets/css/normalize.css' | prepend: site.baseurl }}'>
-  <link rel='stylesheet' href='{{ '/assets/css/skeleton.css' | prepend: site.baseurl }}'>
-  <link rel='stylesheet' href='{{ '/assets/css/stylesheet.css' | prepend: site.baseurl }}'>
-  <!-- font for header -->
-  <link href='//fonts.googleapis.com/css?family=Sacramento' rel='stylesheet' type='text/css'>
-  <!-- general font -->
-  <!-- font-weight: 300 or 400; -->
-  <link href='//fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
+  <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
+
+  <link rel="stylesheet" href="{{ "/css/main.css" | prepend: site.baseurl }}">
+  <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
+  <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}" />
 </head>

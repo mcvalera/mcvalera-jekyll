@@ -24,35 +24,6 @@ a:hover {
     color: $highlight-color;
   }
 
-/* SECTION HEIGHT DETERMINANTS */
-
-html,
-body {
-  height: 100%;
-  margin: 0;
-}
-
-section {
-  min-height: 100vh;
-  margin: 0;
-  border-bottom: 1px solid lightgray;
-  padding-top: 50px; /* ADJUST? */
-}
-
-section:nth-child(odd) {
-  background: white;
-}
-
-section:nth-child(even) {
-  background: white;
-}
-
-section .container {
-  padding-top: 50px;/*  */
-  position: relative;
-  top: 20%;
-}
-
 /* NAVIGATION BAR */
 
 nav {
@@ -89,9 +60,38 @@ footer {
   }
 }
 
+/* SECTION HEIGHT DETERMINANTS */
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+section {
+  min-height: 100vh;
+  margin: 0;
+  border-bottom: 1px solid lightgray;
+  padding-top: 50px; /* ADJUST? */
+}
+
+section:nth-child(odd) {
+  background: white;
+}
+
+section:nth-child(even) {
+  background: white;
+}
+
+section .container {
+  padding-top: 50px;/*  */
+  position: relative;
+  top: 20%;
+}
+
+// IMPORTING PARTIALS FOR EACH SECTION
+
 @import 'home',
         'skills',
         'work'
 ;
-
-@import 'blog';
