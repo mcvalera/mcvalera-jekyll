@@ -10,6 +10,8 @@ github_username:  mcvalera
 
 # Build settings
 markdown: kramdown
+
+# Default for blog posts
 defaults:
   -
     scope:
@@ -19,3 +21,7 @@ defaults:
       layout: 'post'
       category: blog
       author: Clarisse
+
+# Enable pagination
+paginate: 5
+paginate_path: 'blog/page:num'
