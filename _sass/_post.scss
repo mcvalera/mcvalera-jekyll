@@ -1,5 +1,6 @@
 .each-post {
   border-bottom: 1px solid lightgray;
+  margin-bottom: 50px;
 }
 
 .post-header {
@@ -59,17 +60,16 @@ pre {
 // STYLING FOR TABLES WITHIN BLOG POSTS
 .post-content table {
   border-collapse: collapse;
+  max-width: 650px;
   margin: 0 auto;
+  vertical-align: middle;
+  margin-bottom: 20px;
   table, th, td {
     border: 1px solid gray;
     text-align: center;
-    tr {
-    }
-    th {
-      font-weight: bold;
-    }
-    td {
-    }
+  }
+  th {
+    font-weight: bold;
   }
 }
 
