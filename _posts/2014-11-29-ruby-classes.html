@@ -1,0 +1,118 @@
+---
+layout: post
+title: 'Ruby: A Beginners Guide to Classes'
+date: 2014-11-29
+tags: [DBC, technical blog, ruby]
+---
+
+          <p>If you're reading this around the Thanksgiving holidays, I hope you had a lovely Thanksgiving! In this blog post, we will be looking at Classes in Ruby.</p>
+
+          <p>In essence, a <strong>Class</strong> allows you to group methods together so that each time you create an object of a class, each object will behave essentially the same way. Below I've created a class called Yearbook (class names are always in CamelCase) with the methods name, birthday, and fave_quote. Note that the variables contained within each method that have the @ symbol are called <strong>instance variables</strong>. They are different from local variables in that you can access instance variables from other methods.</p>
+
+          <pre><code>
+class Yearbook
+
+  # Below is an initialize method
+  # It takes in the parameters name, birthday, fave_quote
+  def initialize(name, birthday, fave_quote)
+    @name = name
+    @birthday = birthday
+    @fave_quote = fave_quote
+  end
+
+  def name
+    @name
+  end
+
+  def birthday
+    @birthday
+  end
+
+  def fave_quote
+    @fave_quote
+  end
+
+end
+
+cvalera = Yearbook.new("Clarisse Valera", "09/08/1988", "Do I dare / Disturb
+the universe? / In a minute there is time / For decisions and revisions which
+a minute will reverse.")
+puts "Name: #{cvalera.name}"
+puts "Birthday: #{cvalera.birthday}"
+puts "Favorite Quote: #{cvalera.fave_quote}"
+
+# The outcome of the code above is as follows:
+=> Name: Clarisse Valera
+=> Birthday: 09/08/1988
+=> Favorite Quote: Do I dare / Disturb the universe? / In a minute there is
+time / For decisions and revisions which a minute will reverse.
+          </code></pre>
+
+          <p>But wait! A lot of that code above is repetitive isn't it? There has to be a way to make it more streamlined isn't there? Why yes, there is! What we need is an attribute. An <strong>attribute</strong> is a property of an object whose value can be read and/or written through the object. To illustrate, in the code above we can replace our name, birthday, and fave_quote methods with a corresponding attribute reader (written as <i>attr_reader</i>) like so:</p>
+
+          <pre><code>
+class Yearbook
+attr_reader :name, :birthday, :fave_quote
+
+def initialize(name, birthday, fave_quote)
+  @name = name
+  @birthday = birthday
+  @fave_quote = fave_quote
+end
+
+end
+
+# Here, attr_reader :name simply replaces
+#  def name
+#    @name
+#  end
+          </code></pre>
+
+          <p>What if I want to add a new field called nickname to my yearbook and I want my program to be able to return it now as well as to change it later on? As you've probably guessed, I would need the attribute reader, but I would also need what is called the attribute writer (written as <i>attr_writer</i>). Similar to the attribute reader, the attribute writer is a stand in for a similar portion of your code. But hey, Ruby has a shortcut for when you need an attribute writer and attribute reader. This is called the attribute accessor (<i>attr_accessor</i>)!</p>
+
+          <pre><code>
+attr_reader :nickname
+# Replaces the following code block:
+# def nickname
+#   @nickname
+# end
+
+attr_writer :nickname
+# Replaces the following code block:
+# def nickname(string)
+#   @nickname = string
+# end
+
+attr_accessor :nickname
+# Replaces both of the above code blocks
+          </code></pre>
+
+          <p>Considering all of these shortcuts and my newfound desire to add a nickname method that I can modify, how would I then write my code for my Yearbook class?</p>
+
+          <pre><code>
+class Yearbook
+attr_reader :name, :birthday, :fave_quote
+attr_accessor :nickname
+
+  def initialize(name, birthday, fave_quote)
+    @name = name
+    @birthday = birthday
+    @fave_quote = fave_quote
+  end
+  # Note that the nickname variable is not included in the initialize method because inthis case I want to assign/reassign our nickname method outside of the initialize method
+
+end
+
+# The nickname given to me as a baby
+cvalera.nickname = "Clang-Clang"
+puts "Nickname: #{cvalera.nickname}"
+
+# The nickname I now go by
+cvalera.nickname = "Clang"
+puts "Nickname: #{cvalera.nickname}"
+
+=> Nickname: Clang-Clang
+=> Nickname: Clang
+          </code></pre>
+
+          <p>That's really all there is to creating basic classes in Ruby! Try it out for yourself, experiment a bit, and have fun!</p>

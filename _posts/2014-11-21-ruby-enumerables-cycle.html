@@ -1,0 +1,96 @@
+---
+layout: post
+title: 'Ruby Enumerables for Fellow n00bs: Cycle'
+date: 2014-11-21
+tags: [DBC, technical blog, ruby]
+---
+
+          <p>For this week's blog post, I thought I would write about an enumerable that I've never used before, but was interested to learn about--cycle!</p>
+            <!-- If you want to add an image include link below -->
+            <!-- <img src="#" /> -->
+          <!-- Resume typing post below if desired -->
+          <p>But first, what is an enumerable? Well, enumerables provide collections classes such as arrays and hashes with the ability to be search through, manipulate, and sort. In particular, the <code>cycle</code> method allows you to cycle through each element in a collection repeatedly and in order for <i>n</i> times or forever if no limit is indicated. Another way to explain it is to say that <code>cycle</code> passes each element in your array into the code block. <code>cycle</code> starts over again at the beginning of the array once the last item has been passed to the block. To better visualize this, the syntax for <code>cycle</code> is as follows:</p>
+
+          <pre><code>
+cycle(n=nil) { |obj| block }
+  # returns nil if the loop finishes without interruptions
+
+# Note, a different (slightly longer) way to write the code above
+# Replace the {} with the words 'do' and 'end'
+cycle(n) do |obj|
+  block
+end
+
+cycle(n=nil)
+  # returns an enumerator if no block is given
+          </code></pre>
+
+          <p>In the above code, <i>n</i> indicates the number of cycles, <i>obj</i> is each element or key/value combo in your array or hash, and <i>block</i> is the code block where you tell the program what to do. You can see how this works below:</p>
+
+          <pre><code>
+# The array named 'months' contains the first 6 months of the year
+months = ["January", "February", "March", "April", "May", "June"]
+
+months.cycle { |m| puts m }
+  => January
+     February
+     March
+     April
+     May
+     June
+# ...this goes on forever, since I didn't indicate a limit
+# You may want to Ctrl+C out of command line to stop it
+
+# For a cycle with an end, see below:
+months.cycle(2) { |m| puts m }
+  => January
+     February
+     March
+     April
+     May
+     June
+     January
+     February
+     March
+     April
+     May
+     June
+          </code></pre>
+
+          <p>There are other ways to put an end to the cycle method without indicating a parameter <code>n</code>, and one of them is to use <code>break</code>, like so:</p>
+
+          <pre><code>
+months.cycle do |m|
+  puts m
+  break if m == "March"
+end
+=> January
+   February
+   March
+          </code></pre>
+
+          <p>As you may have read above, if you don't include a code block when using the cycle method, you will return an enumerator. This is helpful for situation for when you'd like the objects of your array in a repeating, ordered sequence.</p>
+
+          <pre><code>
+half_a_year = months.cycle
+=> returns an enumerator
+
+# Now I am going to use the method 'next' to give us the following month
+# This is useful just to see why you'd like to return an enumerator
+puts half_a_year.next
+=> January
+puts half_a_year.next
+=> February
+puts half_a_year.next
+=> March
+puts half_a_year.next
+=> April
+puts half_a_year.next
+=> May
+puts half_a_year.next
+=> June
+puts half_a_year.next
+=> January
+          </code></pre>
+
+          <p>Pretty easy, right? If anything wasn't clear, the best resource I had to figure this stuff out was <a href="http://www.globalnerdy.com/2008/07/06/enumerating-enumerable-enumerablecycle/">this site</a>. The author wrote quite a bit more about it than I did (and is probably less of a n00b than myself!). Go read on it a little, and then try it out for yourself!</p>

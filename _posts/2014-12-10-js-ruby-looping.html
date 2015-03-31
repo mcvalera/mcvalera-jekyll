@@ -1,0 +1,127 @@
+---
+layout: post
+title: 'JavaScript v. Ruby: Looping'
+date: 2014-12-10
+tags: [DBC, technical blog, ruby]
+---
+
+          <p>This week is our first week tackling JavaScript, and it's been an interesting ride so far! I think having learned Ruby prior has really helped me with understanding JavaScript faster than I would otherwise, and for this I am grateful (so don't lose hope if you're struggling to learn your first language! It gets better, I promise). JavaScript is a bit of a strange beast in that it's less picky with your code...something that is both a blessing and a curse. But I'm getting distracted here! Let's talk about looping and how they vary in Ruby and JavaScript.</p>
+
+          <p>A <strong>loop</strong> is exactly what it sounds like, and in both Ruby and JavaScript, loops are used in order to execute the same block of code a certain number of times until a condition has been satisfied.</p>
+
+          <p>The <strong>while</strong> loop executes code <i>while</i> a condition is true. The syntax for while loops in Ruby and JavaScript are as follows:</p>
+
+          <pre><code>
+# in Ruby
+
+while condition do
+  code
+end
+
+# which can be shortened to
+while condition { code }
+
+------
+
+// in JavaScript (note that using "//" is the method to comment in JavaScript)
+
+while (condition) {
+  code
+}
+          </code></pre>
+
+          <p>It's much easier to understand when you put actual values in it. Below is an example of the same <code>while</code> loop in both Ruby and JavaScript. The program loops through the code block until the condition <code> x < 5 </code> is met. The code block specifies that <code>x</code> adds 1 to its value, and that we puts out "the variable x is now equal to (the updated value of x)" each time the code is run. Thus we get the results you see below. </p>
+
+          <pre><code>
+# in Ruby
+
+x = 0           # setting the default value of x to 0
+
+while x < 5 do
+  x += 1        # short for x = x + 1
+  puts "the variable x is now equal to #{x}"
+end
+
+# => "the variable x is now equal to 1"
+# => "the variable x is now equal to 2"
+# => "the variable x is now equal to 3"
+# => "the variable x is now equal to 4"
+# => "the variable x is now equal to 5"
+
+------
+
+// in JavaScript
+
+var x = 0       # declaring that the variable x is equal to 0
+
+while (x < 5) {
+  x += 1;
+  console.log("the variable x is now equal to", x);
+}
+
+// => "the variable x is now equal to 1"
+// => "the variable x is now equal to 2"
+// => "the variable x is now equal to 3"
+// => "the variable x is now equal to 4"
+// => "the variable x is now equal to 5"
+          </code></pre>
+
+          <p>As you can see above, they are pretty similar with minor differences in syntax such as wrapping the condition in parentheses, and I used <code>do</code> and <code>end</code> as opposed to <code>{}</code> for my Ruby portion (although I could have used <code>{}</code> instead). Another difference is using <code>puts</code> in Ruby and <code>console.log</code> in JavaScript. For our purposes, it's enough to know that they do similar things, although they do have their differences as well which I might write about at a different time.</p>
+
+          <p>In contrast, the <strong>for</strong> loop executes code once for each element in an expression. The syntax for for loops in both Ruby and JavaScript are as follows:</p>
+
+          <pre><code>
+# in Ruby
+
+for variable in expression do
+  code
+end
+
+# which can be shortened to
+for variable in expression { code }
+
+------
+
+// in JavaScript
+
+for (variable in object) {
+  code
+}
+          </code></pre>
+
+          <p>Similar to the <code>while</code> loop above, below is an example of the same <code>for</code> loop in Ruby that is equivalent to the <code>for/in</code> loop in JavaScript.</p>
+
+          <pre><code>
+# in Ruby
+
+letters = ["a", "b", "c", "d", "e"]
+for x in letters
+  puts "#{x}"
+end
+
+# => a
+# => b
+# => c
+# => d
+# => e
+
+------
+
+// in JavaScript
+
+var letters = ["a", "b", "c", "d", "e"];
+
+for (x in letters) {
+  console.log(letters[x]);
+}
+
+# => a
+# => b
+# => c
+# => d
+# => e
+          </code></pre>
+
+          <p>Both languages above create a variable letters and assign it to an array of the letters a to e, and they both also iterate through each element in an expression/object. The big difference in this particular example, however, is in the line <code>console.log(letters[x])</code> in the JavaScript code. So what's happening here? Well, whereas in Ruby, x refers to the value of the array (i.e. "a", "b", "c"), in JavaScript, x refers for the index of the letters array. If we had just typed in <code>console.log(x)</code> we would've gotten <code>0 1 2 3 4</code> as a result. Typing in <code>(letters[x])</code> however, gives us the values that each index corresponds to. </p>
+
+          <p>I know it might be a bit overwhelming at first, but there's nothing like good ole practice to learn that it's actually fairly straightforward. I hope this is useful!</p>
