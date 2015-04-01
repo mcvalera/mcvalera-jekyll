@@ -58,8 +58,23 @@ footer {
   height: 50px;
   p {
     margin: 0px;
-    position: relative;
-    top: 10px;
+    //position: relative;
+    //top: 10px;
+  }
+}
+
+.socmedia {
+  margin-top: 20px;
+  ul {
+    text-align: center;
+    margin: 0;
+  }
+  li {
+    display: inline-block;
+  }
+  img {
+    height: 25px;
+    //margin: 0px;
   }
 }
 
